@@ -16,11 +16,12 @@ dataset.info()
 dataset.head()
 
 #data visualization
-sns.lineplot(dataset.satisfaction_level, dataset.average_montly_hours, hue=dataset.left)
-sns.lineplot(dataset.satisfaction_level)
-sns.barplot(dataset.Department, dataset.left)
-sns.lineplot(dataset.promotion_last_5years, dataset.left)
-sns.barplot(dataset.salary, dataset.left)
+sns.scatterplot(dataset.average_montly_hours, dataset.satisfaction_level, hue=dataset.left)
+sns.barplot(dataset.left, dataset.satisfaction_level)
+f, ax = plt.subplots(figsize=(10,5))
+sns.countplot(dataset.Department, hue=dataset.left)
+sns.countplot(dataset.promotion_last_5years, hue=dataset.left)
+sns.countplot(dataset.salary, hue=dataset.left)
 
 #encoding
 cat_col=[col for col in dataset.columns if dataset[col].dtype=='object']
